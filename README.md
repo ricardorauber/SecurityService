@@ -5,28 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/SecurityService.svg?style=flat)](http://cocoadocs.org/docsets/SecurityService)
 [![Platform](https://img.shields.io/cocoapods/p/SecurityService.svg?style=flat)](http://cocoadocs.org/docsets/SecurityService)
 
+## SecurityService
+
 Do you always have trouble trying to implement cryptografy? Well, you don't need to worry anymore! In this framework I have created a wrapper on top of one of the most beloved crypto frame. All works out there, the [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift). 
 
 Why? Just because I wanted to repeat this setup in many projects and so I have created the `SecurityService`.
-
-## TL; DR
-
-You just need to instantiate the `SecurityService` and you can already start to work with cryptografy. All the secure stuff is handled automatically and stored in `Keychain`. So, you just need to do this:
-
-```swift
-let service = SecurityService()
-
-// Encrypt/Decrypt
-let source = "some string"
-let data = source.data(using: .utf8)!
-let encrypted = service.encrypt(data: data)
-let decrypted = service.decrypt(data: encrypted!)
-let result = String(data: decrypted!, encoding: .utf8)
-
-// Hash
-let password = "something"
-let hashPassword = service.hash(password: password)
-```
 
 ## Setup
 
