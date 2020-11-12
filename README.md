@@ -7,9 +7,9 @@
 
 ## SecurityService
 
-Do you always have trouble trying to implement cryptografy? Well, you don't need to worry anymore! In this framework I have created a wrapper on top of one of the most beloved crypto frame. All works out there, the [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift). 
+Do you always have trouble trying to implement cryptography? Well, you don't need to worry anymore! In this framework I have created a wrapper on top of one of the most beloved crypto frameworks out there, the [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift). 
 
-Why? Just because I wanted to repeat this setup in many projects and so I have created the `SecurityService`.
+Why? Just because I wanted to repeat this setup in many projects and then I have created the `SecurityService`.
 
 ## Setup
 
@@ -67,7 +67,7 @@ let result = String(data: decrypted!, encoding: .utf8)
 
 #### Hash passwords
 
-You can also has passwords in order to protect the user's data using the `PBKDF2` algorithm:
+You can also hash passwords in order to protect the user's data using the `PBKDF2` algorithm:
 
 ```swift
 let password = "something"
