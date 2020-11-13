@@ -28,7 +28,8 @@ public class SecurityService {
                 hashSalt: String? = nil,
                 hashIterations: Int = 4096,
                 hashKeyLength: Int = 32,
-                hashVariant: HMAC.Variant = .sha256) {
+                hashVariant: HMAC.Variant = .sha256,
+                saveKeys: Bool = true) {
         
         self.storage = storage
         
@@ -39,7 +40,6 @@ public class SecurityService {
         } else {
             self.cipherKey = .randomString(length: 16)
         }
-        storage.set(value: self.cipherKey, for: .securityServiceCipherKey)
         
         if let iv = cipherIv {
             self.cipherIv = iv
@@ -48,7 +48,6 @@ public class SecurityService {
         } else {
             self.cipherIv = .randomString(length: 16)
         }
-        storage.set(value: self.cipherIv, for: .securityServiceCipherIv)
         
         if let salt = hashSalt {
             self.hashSalt = salt
@@ -57,7 +56,12 @@ public class SecurityService {
         } else {
             self.hashSalt = .randomString(length: 8)
         }
-        storage.set(value: self.hashSalt, for: .securityServiceHashSalt)
+        
+        if saveKeys {
+            storage.set(value: self.cipherKey, for: .securityServiceCipherKey)
+            storage.set(value: self.cipherIv, for: .securityServiceCipherIv)
+            storage.set(value: self.hashSalt, for: .securityServiceHashSalt)
+        }
         
         self.hashIterations = hashIterations
         self.hashKeyLength = hashKeyLength
